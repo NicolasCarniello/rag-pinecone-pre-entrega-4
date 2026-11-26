@@ -1,0 +1,32 @@
+[
+  {
+    "pregunta": "¿Qué significa el código AP-4290 y cómo lo resuelvo?",
+    "documento_id_esperado": "errores",
+    "tipo": "léxica: código de error exacto"
+  },
+  {
+    "pregunta": "¿En qué versión se deprecó PaymentIntent.confirm() y qué hay que usar en su lugar?",
+    "documento_id_esperado": "changelog",
+    "tipo": "léxica: nombre de método (fuente PDF)"
+  },
+  {
+    "pregunta": "¿Cómo compruebo que una notificación que llega a mi servidor la mandó realmente Andes Pay?",
+    "documento_id_esperado": "webhooks",
+    "tipo": "semántica: paráfrasis, no menciona 'webhook' ni 'firma'"
+  },
+  {
+    "pregunta": "Si creo el cliente sin pasarle la clave, ¿de dónde la saca?",
+    "documento_id_esperado": "instalacion_y_configuracion",
+    "tipo": "semántica: paráfrasis de api_key / variable de entorno"
+  },
+  {
+    "pregunta": "¿Cómo recorro todos los reembolsos de a 100 guardando la posición para seguir después?",
+    "documento_id_esperado": "reembolsos_y_paginacion",
+    "tipo": "mixta: término 'reembolsos' + concepto de cursor"
+  },
+  {
+    "pregunta": "¿Cuántos días tengo para capturar un pago que solo autoricé?",
+    "documento_id_esperado": "pagos",
+    "tipo": "mixta: 'capturar' / 'autoricé'"
+  }
+]

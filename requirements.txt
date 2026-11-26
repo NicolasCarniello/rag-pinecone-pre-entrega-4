@@ -1,0 +1,20 @@
+pinecone>=7.0
+langchain>=1.0
+langchain-core>=1.0
+langchain-classic>=1.0        # EnsembleRetriever (en LangChain 1.x vive acá)
+langchain-community>=0.4      # BM25Retriever
+langchain-pinecone>=0.2
+langchain-google-genai>=4.0
+langchain-text-splitters>=1.0
+rank-bm25>=0.2
+pypdf>=5.0
+pyyaml>=6.0
+pydantic>=2.7
+python-dotenv>=1.0
+tiktoken>=0.7
+pytest>=8.0
+
+# Opcional: embeddings de OpenAI (EMBEDDING_PROVIDER=openai)
+# langchain-openai>=1.0
+# Solo para regenerar data/changelog.pdf
+# reportlab>=4.0
