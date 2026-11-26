@@ -1,0 +1,466 @@
+{
+  "modos": {
+    "hybrid": {
+      "nombre": "Híbrido (10 cand. c/u → top-5)",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué significa el código AP-4290 y cómo lo resuelvo?",
+          "documento_id_esperado": "errores",
+          "tipo": "léxica: código de error exacto",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "errores::p0::c01",
+            "errores::p0::c00",
+            "reembolsos_y_paginacion::p0::c00",
+            "webhooks::p0::c00",
+            "pagos::p0::c00"
+          ]
+        },
+        {
+          "pregunta": "¿En qué versión se deprecó PaymentIntent.confirm() y qué hay que usar en su lugar?",
+          "documento_id_esperado": "changelog",
+          "tipo": "léxica: nombre de método (fuente PDF)",
+          "recall@k": 1.0,
+          "precision@k": 0.6,
+          "precision_max": 0.6,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "changelog::p1::c00",
+            "changelog::p3::c02",
+            "webhooks::p0::c01",
+            "changelog::p2::c01",
+            "pagos::p0::c01"
+          ]
+        },
+        {
+          "pregunta": "¿Cómo compruebo que una notificación que llega a mi servidor la mandó realmente Andes Pay?",
+          "documento_id_esperado": "webhooks",
+          "tipo": "semántica: paráfrasis, no menciona 'webhook' ni 'firma'",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "webhooks::p0::c00",
+            "webhooks::p0::c01",
+            "errores::p0::c00",
+            "errores::p0::c01",
+            "instalacion_y_configuracion::p0::c01"
+          ]
+        },
+        {
+          "pregunta": "Si creo el cliente sin pasarle la clave, ¿de dónde la saca?",
+          "documento_id_esperado": "instalacion_y_configuracion",
+          "tipo": "semántica: paráfrasis de api_key / variable de entorno",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "instalacion_y_configuracion::p0::c00",
+            "instalacion_y_configuracion::p0::c01",
+            "webhooks::p0::c01",
+            "pagos::p0::c01",
+            "changelog::p2::c01"
+          ]
+        },
+        {
+          "pregunta": "¿Cómo recorro todos los reembolsos de a 100 guardando la posición para seguir después?",
+          "documento_id_esperado": "reembolsos_y_paginacion",
+          "tipo": "mixta: término 'reembolsos' + concepto de cursor",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "reembolsos_y_paginacion::p0::c01",
+            "reembolsos_y_paginacion::p0::c00",
+            "pagos::p0::c01",
+            "changelog::p1::c00",
+            "webhooks::p0::c00"
+          ]
+        },
+        {
+          "pregunta": "¿Cuántos días tengo para capturar un pago que solo autoricé?",
+          "documento_id_esperado": "pagos",
+          "tipo": "mixta: 'capturar' / 'autoricé'",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "pagos::p0::c00",
+            "pagos::p0::c01",
+            "reembolsos_y_paginacion::p0::c00",
+            "webhooks::p0::c01",
+            "webhooks::p0::c00"
+          ]
+        }
+      ],
+      "promedios": {
+        "recall@k": 1.0,
+        "precision@k": 0.433,
+        "precision_max": 0.433,
+        "recall_chunks@k": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "hybrid_k5": {
+      "nombre": "Híbrido (5 cand. c/u, como en clase)",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué significa el código AP-4290 y cómo lo resuelvo?",
+          "documento_id_esperado": "errores",
+          "tipo": "léxica: código de error exacto",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "errores::p0::c01",
+            "errores::p0::c00",
+            "reembolsos_y_paginacion::p0::c00",
+            "changelog::p1::c00",
+            "changelog::p3::c02"
+          ]
+        },
+        {
+          "pregunta": "¿En qué versión se deprecó PaymentIntent.confirm() y qué hay que usar en su lugar?",
+          "documento_id_esperado": "changelog",
+          "tipo": "léxica: nombre de método (fuente PDF)",
+          "recall@k": 1.0,
+          "precision@k": 0.6,
+          "precision_max": 0.6,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "changelog::p1::c00",
+            "changelog::p3::c02",
+            "webhooks::p0::c01",
+            "changelog::p2::c01",
+            "pagos::p0::c01"
+          ]
+        },
+        {
+          "pregunta": "¿Cómo compruebo que una notificación que llega a mi servidor la mandó realmente Andes Pay?",
+          "documento_id_esperado": "webhooks",
+          "tipo": "semántica: paráfrasis, no menciona 'webhook' ni 'firma'",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "webhooks::p0::c00",
+            "webhooks::p0::c01",
+            "changelog::p2::c01",
+            "changelog::p1::c00",
+            "instalacion_y_configuracion::p0::c01"
+          ]
+        },
+        {
+          "pregunta": "Si creo el cliente sin pasarle la clave, ¿de dónde la saca?",
+          "documento_id_esperado": "instalacion_y_configuracion",
+          "tipo": "semántica: paráfrasis de api_key / variable de entorno",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "instalacion_y_configuracion::p0::c00",
+            "instalacion_y_configuracion::p0::c01",
+            "webhooks::p0::c01",
+            "pagos::p0::c00",
+            "webhooks::p0::c00"
+          ]
+        },
+        {
+          "pregunta": "¿Cómo recorro todos los reembolsos de a 100 guardando la posición para seguir después?",
+          "documento_id_esperado": "reembolsos_y_paginacion",
+          "tipo": "mixta: término 'reembolsos' + concepto de cursor",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "reembolsos_y_paginacion::p0::c01",
+            "reembolsos_y_paginacion::p0::c00",
+            "pagos::p0::c01",
+            "changelog::p1::c00",
+            "errores::p0::c01"
+          ]
+        },
+        {
+          "pregunta": "¿Cuántos días tengo para capturar un pago que solo autoricé?",
+          "documento_id_esperado": "pagos",
+          "tipo": "mixta: 'capturar' / 'autoricé'",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "pagos::p0::c00",
+            "pagos::p0::c01",
+            "reembolsos_y_paginacion::p0::c00",
+            "webhooks::p0::c01",
+            "changelog::p1::c00"
+          ]
+        }
+      ],
+      "promedios": {
+        "recall@k": 1.0,
+        "precision@k": 0.433,
+        "precision_max": 0.433,
+        "recall_chunks@k": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "semantic": {
+      "nombre": "Solo semántico (Pinecone)",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué significa el código AP-4290 y cómo lo resuelvo?",
+          "documento_id_esperado": "errores",
+          "tipo": "léxica: código de error exacto",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "errores::p0::c01",
+            "errores::p0::c00",
+            "reembolsos_y_paginacion::p0::c00",
+            "changelog::p1::c00",
+            "changelog::p3::c02"
+          ]
+        },
+        {
+          "pregunta": "¿En qué versión se deprecó PaymentIntent.confirm() y qué hay que usar en su lugar?",
+          "documento_id_esperado": "changelog",
+          "tipo": "léxica: nombre de método (fuente PDF)",
+          "recall@k": 1.0,
+          "precision@k": 0.6,
+          "precision_max": 0.6,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "changelog::p3::c02",
+            "changelog::p1::c00",
+            "webhooks::p0::c01",
+            "pagos::p0::c01",
+            "changelog::p2::c01"
+          ]
+        },
+        {
+          "pregunta": "¿Cómo compruebo que una notificación que llega a mi servidor la mandó realmente Andes Pay?",
+          "documento_id_esperado": "webhooks",
+          "tipo": "semántica: paráfrasis, no menciona 'webhook' ni 'firma'",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "webhooks::p0::c00",
+            "webhooks::p0::c01",
+            "changelog::p2::c01",
+            "changelog::p1::c00",
+            "instalacion_y_configuracion::p0::c01"
+          ]
+        },
+        {
+          "pregunta": "Si creo el cliente sin pasarle la clave, ¿de dónde la saca?",
+          "documento_id_esperado": "instalacion_y_configuracion",
+          "tipo": "semántica: paráfrasis de api_key / variable de entorno",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "instalacion_y_configuracion::p0::c00",
+            "instalacion_y_configuracion::p0::c01",
+            "pagos::p0::c00",
+            "webhooks::p0::c00",
+            "webhooks::p0::c01"
+          ]
+        },
+        {
+          "pregunta": "¿Cómo recorro todos los reembolsos de a 100 guardando la posición para seguir después?",
+          "documento_id_esperado": "reembolsos_y_paginacion",
+          "tipo": "mixta: término 'reembolsos' + concepto de cursor",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "reembolsos_y_paginacion::p0::c01",
+            "reembolsos_y_paginacion::p0::c00",
+            "pagos::p0::c01",
+            "errores::p0::c01",
+            "changelog::p1::c00"
+          ]
+        },
+        {
+          "pregunta": "¿Cuántos días tengo para capturar un pago que solo autoricé?",
+          "documento_id_esperado": "pagos",
+          "tipo": "mixta: 'capturar' / 'autoricé'",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "pagos::p0::c00",
+            "pagos::p0::c01",
+            "reembolsos_y_paginacion::p0::c00",
+            "changelog::p1::c00",
+            "webhooks::p0::c01"
+          ]
+        }
+      ],
+      "promedios": {
+        "recall@k": 1.0,
+        "precision@k": 0.433,
+        "precision_max": 0.433,
+        "recall_chunks@k": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "bm25": {
+      "nombre": "Solo léxico (BM25)",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué significa el código AP-4290 y cómo lo resuelvo?",
+          "documento_id_esperado": "errores",
+          "tipo": "léxica: código de error exacto",
+          "recall@k": 1.0,
+          "precision@k": 0.2,
+          "precision_max": 0.4,
+          "recall_chunks@k": 0.5,
+          "mrr": 1.0,
+          "recuperados": [
+            "errores::p0::c01",
+            "pagos::p0::c00",
+            "instalacion_y_configuracion::p0::c00",
+            "webhooks::p0::c00",
+            "pagos::p0::c01"
+          ]
+        },
+        {
+          "pregunta": "¿En qué versión se deprecó PaymentIntent.confirm() y qué hay que usar en su lugar?",
+          "documento_id_esperado": "changelog",
+          "tipo": "léxica: nombre de método (fuente PDF)",
+          "recall@k": 1.0,
+          "precision@k": 0.6,
+          "precision_max": 0.6,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "changelog::p1::c00",
+            "webhooks::p0::c01",
+            "errores::p0::c00",
+            "changelog::p3::c02",
+            "changelog::p2::c01"
+          ]
+        },
+        {
+          "pregunta": "¿Cómo compruebo que una notificación que llega a mi servidor la mandó realmente Andes Pay?",
+          "documento_id_esperado": "webhooks",
+          "tipo": "semántica: paráfrasis, no menciona 'webhook' ni 'firma'",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "webhooks::p0::c00",
+            "errores::p0::c01",
+            "webhooks::p0::c01",
+            "errores::p0::c00",
+            "reembolsos_y_paginacion::p0::c01"
+          ]
+        },
+        {
+          "pregunta": "Si creo el cliente sin pasarle la clave, ¿de dónde la saca?",
+          "documento_id_esperado": "instalacion_y_configuracion",
+          "tipo": "semántica: paráfrasis de api_key / variable de entorno",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 0.5,
+          "recuperados": [
+            "webhooks::p0::c01",
+            "instalacion_y_configuracion::p0::c00",
+            "errores::p0::c00",
+            "instalacion_y_configuracion::p0::c01",
+            "pagos::p0::c01"
+          ]
+        },
+        {
+          "pregunta": "¿Cómo recorro todos los reembolsos de a 100 guardando la posición para seguir después?",
+          "documento_id_esperado": "reembolsos_y_paginacion",
+          "tipo": "mixta: término 'reembolsos' + concepto de cursor",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "reembolsos_y_paginacion::p0::c01",
+            "reembolsos_y_paginacion::p0::c00",
+            "changelog::p1::c00",
+            "pagos::p0::c00",
+            "pagos::p0::c01"
+          ]
+        },
+        {
+          "pregunta": "¿Cuántos días tengo para capturar un pago que solo autoricé?",
+          "documento_id_esperado": "pagos",
+          "tipo": "mixta: 'capturar' / 'autoricé'",
+          "recall@k": 1.0,
+          "precision@k": 0.4,
+          "precision_max": 0.4,
+          "recall_chunks@k": 1.0,
+          "mrr": 1.0,
+          "recuperados": [
+            "pagos::p0::c00",
+            "reembolsos_y_paginacion::p0::c00",
+            "pagos::p0::c01",
+            "instalacion_y_configuracion::p0::c01",
+            "webhooks::p0::c01"
+          ]
+        }
+      ],
+      "promedios": {
+        "recall@k": 1.0,
+        "precision@k": 0.4,
+        "precision_max": 0.433,
+        "recall_chunks@k": 0.917,
+        "mrr": 0.917
+      }
+    }
+  },
+  "fecha": "2026-11-26T15:52:22",
+  "indice": "andespay-docs",
+  "namespace": "dev",
+  "embeddings": "gemini:gemini-embedding-001 (1536 dim)",
+  "n_chunks": 13,
+  "k": 5
+}

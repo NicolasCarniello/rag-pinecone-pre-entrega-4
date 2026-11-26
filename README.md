@@ -147,5 +147,30 @@ pytest -q                  # 26 offline (Pinecone falso) + 4 de integración si 
 ## Resultados de la evaluación
 
 <!-- METRICAS:INICIO -->
-_Se completa automáticamente al correr `python evaluate.py`._
+_Última evaluación: 2026-11-26T15:52:22 · índice `andespay-docs` · namespace `dev` · embeddings `gemini:gemini-embedding-001 (1536 dim)` · 13 chunks._
+
+| Modo | Recall@5 | Precision@5 | Precision@5 máxima posible | MRR |
+|---|---|---|---|---|
+| Híbrido (10 cand. c/u → top-5) | 1.00 | 0.43 | 0.43 | 1.00 |
+| Híbrido (5 cand. c/u, como en clase) | 1.00 | 0.43 | 0.43 | 1.00 |
+| Solo semántico (Pinecone) | 1.00 | 0.43 | 0.43 | 1.00 |
+| Solo léxico (BM25) | 1.00 | 0.40 | 0.43 | 0.92 |
+
+Detalle del modo híbrido:
+
+| # | Pregunta | Documento esperado | Recall@5 | Precision@5 | MRR |
+|---|---|---|---|---|---|
+| 1 | ¿Qué significa el código AP-4290 y cómo lo resuelvo? | `errores` | 1.00 | 0.40 | 1.00 |
+| 2 | ¿En qué versión se deprecó PaymentIntent.confirm() y qué hay que usar en su lugar? | `changelog` | 1.00 | 0.60 | 1.00 |
+| 3 | ¿Cómo compruebo que una notificación que llega a mi servidor la mandó realmente Andes Pay? | `webhooks` | 1.00 | 0.40 | 1.00 |
+| 4 | Si creo el cliente sin pasarle la clave, ¿de dónde la saca? | `instalacion_y_configuracion` | 1.00 | 0.40 | 1.00 |
+| 5 | ¿Cómo recorro todos los reembolsos de a 100 guardando la posición para seguir después? | `reembolsos_y_paginacion` | 1.00 | 0.40 | 1.00 |
+| 6 | ¿Cuántos días tengo para capturar un pago que solo autoricé? | `pagos` | 1.00 | 0.40 | 1.00 |
 <!-- METRICAS:FIN -->
+
+### Interpretación
+
+- **El benchmark está saturado.** Con 13 chunks en 6 documentos, las cuatro configuraciones encuentran siempre el documento correcto (Recall@5 = 1,00) y llegan al techo de Precision@5 (0,43 = promedio de 0,40 para documentos de 2 chunks y 0,60 para el changelog, que tiene 3). Con un corpus tan chico, las métricas no alcanzan para separar el híbrido de la búsqueda semántica.
+- **BM25 solo falla con paráfrasis.** En "Si creo el cliente sin pasarle la clave, ¿de dónde la saca?" puso primero un chunk de webhooks y el correcto quedó 2.º (MRR 0,50): la pregunta no usa los términos del documento (`api_key`, `ANDESPAY_API_KEY`). Es el caso que cubre la búsqueda semántica, y el híbrido lo resolvió en el 1.º lugar.
+- **El híbrido no empeora a la búsqueda semántica y ordena mejor en algunos casos.** En la pregunta del changelog, la semántica ubicó los 3 chunks relevantes en las posiciones 1, 2 y 5; el híbrido, en 1, 2 y 4, porque BM25 reforzó el chunk que menciona `PaymentIntent.confirm()`.
+- **Próximo paso**: para que la evaluación discrimine hace falta un corpus más grande (con documentos parecidos entre sí) y preguntas más difíciles, por ejemplo códigos de error parecidos (`AP-4091` vs `AP-4100`) o nombres de métodos que aparecen en varios documentos. Ahí es donde se espera que la búsqueda léxica marque diferencia.
